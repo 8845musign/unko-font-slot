@@ -64,28 +64,52 @@
 <script>
   const maxY = 0;
   let y = -300;
-  //let counter = 0;
+  let counter = 0;
+  const second = 60;
+
+  var speed = 20;
 
   const items = document.getElementById('items');
 
   const loopY = (y) => {
-    if (y > -100) return -300;
+    if (y > 0) return -300;
 
     return y;
   }
 
   const anime = () => {
-    //counter++;
+    counter++;
 
-    y += 10;
+    console.log(speed)
+    console.log(counter)
+
+    y += speed;
     y = loopY(y);
 
     items.style.top = `${y}px`;
 
-    window.requestAnimationFrame(anime); 
+    if (counter > 120) {
+      speed = 9;
+    }
 
-    if (counter > 1000) {
-      counter = 0;
+    if (counter > 240) {
+      speed = 7;
+    }
+
+    if (counter > 300) {
+      speed = 5;
+    }
+
+    if (counter > 320) {
+      speed = 1;
+    }
+
+    if (counter > 400 && (y % 100 === 0)) {
+      speed = 0;
+    }
+
+    if (speed > 0) {
+      window.requestAnimationFrame(anime); 
     }
   }
   anime();
