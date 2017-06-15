@@ -36,7 +36,7 @@
 
   </style>
 </head>
-<body>
+<body id="body">
 
 <div class="lane">
   <div class="items" id="items">
@@ -61,58 +61,69 @@
   </div>
 </div>
 
+<button id="stop">bingo!</button>
+
 <script>
-  const maxY = 0;
-  let y = -300;
-  let counter = 0;
-  const second = 60;
+  const stopButton = document.getElementById("stop");
 
-  var speed = 20;
+  stopButton.addEventListener("click", () => {
 
-  const items = document.getElementById('items');
+    const maxY = 0;
+    let y = -300;
+    let counter = 0;
+    const second = 60;
 
-  const loopY = (y) => {
-    if (y > 0) return -300;
+    var speed = 20;
 
-    return y;
-  }
+    const items = document.getElementById('items');
 
-  const anime = () => {
-    counter++;
+    const loopY = (y) => {
+      if (y > 0) return -300;
 
-    console.log(speed)
-    console.log(counter)
-
-    y += speed;
-    y = loopY(y);
-
-    items.style.top = `${y}px`;
-
-    if (counter > 120) {
-      speed = 9;
+      return y;
     }
 
-    if (counter > 240) {
-      speed = 7;
-    }
+    const anime = () => {
+      counter++;
 
-    if (counter > 300) {
-      speed = 5;
-    }
+      console.log(speed)
+      console.log(counter)
 
-    if (counter > 320) {
-      speed = 1;
-    }
+      y += speed;
+      y = loopY(y);
 
-    if (counter > 400 && (y % 100 === 0)) {
-      speed = 0;
-    }
+      items.style.top = `${y}px`;
 
-    if (speed > 0) {
-      window.requestAnimationFrame(anime); 
+      if (counter > 120) {
+        speed = 9;
+      }
+
+      if (counter > 240) {
+        speed = 7;
+      }
+
+      if (counter > 300) {
+        speed = 5;
+      }
+
+      if (counter > 320) {
+        speed = 1;
+      }
+
+      if (counter > 400 && (y % 100 === 0)) {
+        speed = 0;
+        document.getElementById("body").className = "bingo";
+      }
+
+      if (speed > 0) {
+        window.requestAnimationFrame(anime); 
+      }
     }
-  }
-  anime();
+    anime();
+
+
+  })
+
 
 </script>
 </body>
