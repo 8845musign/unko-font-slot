@@ -33,6 +33,27 @@
       font-size: 80px;
     }
 
+    .bingo {
+      animation: Flash1 1s infinite;
+      background-color: white;
+    }
+
+    /* アニメーション */
+    @keyframes Flash1{
+      50%{
+        background-color: red;
+      }
+    }
+
+    .cong {
+      color: white;
+      font-size: 100px;
+      display: none;
+    }
+
+    .bingo .cong {
+      display: block; 
+    }
 
   </style>
 </head>
@@ -60,6 +81,8 @@
     </div>
   </div>
 </div>
+
+<div class="cong">yamazaki!</div>
 
 <button id="stop">bingo!</button>
 
