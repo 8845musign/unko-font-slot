@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: #f7f7f7;
+    }
+
+    .lane {
+      position: relative;
+      overflow: hidden;
+      width: 100px;
+      height: 100px;
+      background-color: #fff;
+    }
+
+    .items {
+      position: absolute;
+      top: -300px;
+      left: 0;
+      width: 100px;
+    }
+
+    .item {
+      text-align: center;
+      height: 100px;
+      width: 100px;
+      line-height: 100px;
+      font-size: 80px;
+    }
+
+
+  </style>
+</head>
+<body>
+
+<div class="lane">
+  <div class="items" id="items">
+    <div class="item">
+      😀
+    </div>
+    <div class="item">
+      😁
+    </div>
+    <div class="item">
+      😂
+    </div>
+    <div class="item">
+      😀
+    </div>
+    <div class="item">
+      😁
+    </div>
+    <div class="item">
+      😂
+    </div>
+  </div>
+</div>
+
+<script>
+  const maxY = 0;
+  let y = -300;
+  //let counter = 0;
+
+  const items = document.getElementById('items');
+
+  const loopY = (y) => {
+    if (y > -100) return -300;
+
+    return y;
+  }
+
+  const anime = () => {
+    //counter++;
+
+    y += 10;
+    y = loopY(y);
+
+    items.style.top = `${y}px`;
+
+    window.requestAnimationFrame(anime); 
+
+    if (counter > 1000) {
+      counter = 0;
+    }
+  }
+  anime();
+
+</script>
+</body>
+</html>
