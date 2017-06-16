@@ -117,23 +117,23 @@
 
       items.style.top = `${y}px`;
 
-      if (counter > 120) {
+      if (counter > 200) {
         speed = 9;
       }
 
-      if (counter > 240) {
+      if (counter > 220) {
         speed = 7;
       }
 
-      if (counter > 300) {
+      if (counter > 240) {
         speed = 5;
       }
 
-      if (counter > 320) {
+      if (counter > 260) {
         speed = 1;
       }
 
-      if (counter > 400 && (y % 100 === 0)) {
+      if (counter > 300 && (y % 100 === 0)) {
         speed = 0;
         document.getElementById("body").className = "bingo";
       }
