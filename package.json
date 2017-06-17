@@ -15,5 +15,24 @@
   "bugs": {
     "url": "https://github.com/8845musign/bingo-2017/issues"
   },
-  "homepage": "https://github.com/8845musign/bingo-2017#readme"
+  "homepage": "https://github.com/8845musign/bingo-2017#readme",
+  "dependencies": {
+    "next": "^2.4.4",
+    "next-redux-wrapper": "^1.1.2",
+    "react": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "redux": "^3.7.0",
+    "redux-actions": "^2.0.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.0.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-node": "^5.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-standard": "^3.0.1"
+  }
 }
