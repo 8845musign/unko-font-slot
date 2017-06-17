@@ -2,12 +2,18 @@ import { Component } from 'react'
 import { connect } from 'react-redux'
 import Link from 'next/link'
 
+import List from './result/List'
+
 class resultContainer extends Component {
   render () {
     return (
       <div>
         <Link href='/'><a>bingo</a></Link>
-        page!
+        
+        <List
+          selected={this.props.selected}
+          member={this.props.member}
+        />
       </div>
     )
   }
@@ -15,6 +21,8 @@ class resultContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    selected: state.game.selected,
+    member: state.member
   }
 }
 
