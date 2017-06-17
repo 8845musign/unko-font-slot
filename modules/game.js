@@ -1,15 +1,23 @@
 import { createAction } from 'redux-actions'
 
+export const INIT = 'modules/game/INIT'
 export const SELECT = 'modules/game/SELECT'
 
 export const select = createAction(SELECT, id => id)
 
 const gameReducer = (state = {
-  selected: []
+  selected: [],
+  left: []
 }, action) => {
   switch (action.type) {
     case SELECT:
-      return state.selected.push(action.payload)
+      return Object.assign({},
+        state,
+        {
+          selected: [...state.selected, action.payload],
+          left: state.left.filter(id => id !== action.payload)
+        }
+      )
     default:
       return state
   }
