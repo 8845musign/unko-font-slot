@@ -1,6 +1,6 @@
-export default ({ selected, member }) => {
+export default ({ selected, members }) => {
   const item = (selectedMember) => {
-    const m = member[selectedMember]
+    const m = members[selectedMember]
     return (
       <li>{m.name}</li>
     )

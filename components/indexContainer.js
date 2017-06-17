@@ -20,7 +20,7 @@ class indexContainer extends Component {
     return (
       <div>
         <Link href='result'><a>result</a></Link>
-        <p>{getSelectedMembarName(this.props.member, this.props.selected)}</p>
+        <p>{getSelectedMembarName(this.props.members, this.props.selected)}</p>
 
         <button onClick={onClick(this.props.select)}>next</button>
       </div>
@@ -31,7 +31,7 @@ class indexContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     selected: state.game.selected,
-    member: state.member
+    members: state.members
   }
 }
 

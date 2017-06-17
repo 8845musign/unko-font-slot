@@ -1,4 +1,4 @@
-const memberReducer = (state = {
+const membersReducer = (state = {
   1: {
     name: 'sample taro',
     image: 'image'
@@ -15,4 +15,4 @@ const memberReducer = (state = {
   return state
 }
 
-export default memberReducer
+export default membersReducer

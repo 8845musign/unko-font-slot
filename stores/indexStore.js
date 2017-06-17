@@ -1,7 +1,7 @@
 import { createStore, combineReducers, compose } from 'redux'
 
 import gameReducer from '../modules/game'
-import memberReducer from '../modules/member'
+import membersReducer from '../modules/members'
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -12,7 +12,7 @@ const enhancer = composeEnhancers()
 
 const rootReducer = combineReducers({
   game: gameReducer,
-  member: memberReducer
+  members: membersReducer
 })
 
 const indexStore = () => {

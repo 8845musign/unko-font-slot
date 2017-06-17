@@ -12,7 +12,7 @@ class resultContainer extends Component {
         
         <List
           selected={this.props.selected}
-          member={this.props.member}
+          members={this.props.members}
         />
       </div>
     )
@@ -22,7 +22,7 @@ class resultContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     selected: state.game.selected,
-    member: state.member
+    members: state.members
   }
 }
 
