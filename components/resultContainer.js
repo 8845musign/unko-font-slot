@@ -22,7 +22,7 @@ class resultContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     selected: state.game.selected,
-    members: state.members
+    members: state.members.byId
   }
 }
 
