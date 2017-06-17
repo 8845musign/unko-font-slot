@@ -1,5 +1,4 @@
 {
-  "parse": "babel-eslint",
   "extends": [
     "standard",
     "standard-react"
