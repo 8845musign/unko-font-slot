@@ -1,6 +1,5 @@
 import { createAction } from 'redux-actions'
 
-export const INIT = 'modules/game/INIT'
 export const SELECT = 'modules/game/SELECT'
 export const LOTTERY = 'modules/game/LOTTERY'
 export const END = 'modules/game/END'
