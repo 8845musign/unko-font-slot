@@ -5,7 +5,9 @@ import {
   applyMiddleware
 } from 'redux'
 
-import gameReducer, { lotteryMiddleware } from '../modules/game'
+import gameReducer, {
+  lotteryMiddleware, selectMiddleware
+} from '../modules/game'
 import membersReducer from '../modules/members'
 
 const composeEnhancers =
@@ -13,7 +15,7 @@ const composeEnhancers =
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose
 
-const enhancer = composeEnhancers(applyMiddleware(lotteryMiddleware))
+const enhancer = composeEnhancers(applyMiddleware(lotteryMiddleware, selectMiddleware))
 
 const rootReducer = combineReducers({
   game: gameReducer,

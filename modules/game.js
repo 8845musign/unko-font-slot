@@ -3,9 +3,11 @@ import { createAction } from 'redux-actions'
 export const INIT = 'modules/game/INIT'
 export const SELECT = 'modules/game/SELECT'
 export const LOTTERY = 'modules/game/LOTTERY'
+export const END = 'modules/game/END'
 
 export const select = createAction(SELECT, id => id)
 export const lottery = createAction(LOTTERY)
+export const end = createAction(END)
 
 const getRand = (max) => {
   return Math.floor(Math.random() * (max + 1))
@@ -31,9 +33,21 @@ export const lotteryMiddleware = ({ dispatch, getState }) => next => action => {
   }
 }
 
+export const selectMiddleware = ({ dispatch, getState }) => next => action => {
+  if (action.type === SELECT) {
+    const state = getState()
+    next(action)
+
+    if (state.game.left.length <= 1) dispatch(end())
+  } else {
+    next(action)
+  }
+}
+
 const gameReducer = (state = {
   selected: [],
-  left: [1, 2, 3]
+  left: [1, 2, 3],
+  isEnd: false
 }, action) => {
   switch (action.type) {
     case SELECT:
@@ -42,6 +56,11 @@ const gameReducer = (state = {
         selected: [...state.selected, action.payload],
         left: state.left.filter((id) => id !== action.payload)
       }
+    case END:
+      return Object.assign({},
+        state,
+        { isEnd: true }
+      )
     default:
       return state
   }
