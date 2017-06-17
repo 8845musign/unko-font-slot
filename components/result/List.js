@@ -4,7 +4,7 @@ const List = ({ selected, members }) => {
   const item = (selectedMember) => {
     const m = members[selectedMember]
     return (
-      <li>{m.name}</li>
+      <li key={m.id}>{m.name}</li>
     )
   }
 
