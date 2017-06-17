@@ -24,7 +24,7 @@ export const lotteryMiddleware = ({ dispatch, getState }) => next => action => {
     const candidate = getLeftMembers(state)
 
     const num = getRand(candidate.length - 1)
-    const selectedId = candidate[num - 1]
+    const selectedId = candidate[num]
     dispatch(select(selectedId))
   } else {
     next(action)
@@ -33,17 +33,15 @@ export const lotteryMiddleware = ({ dispatch, getState }) => next => action => {
 
 const gameReducer = (state = {
   selected: [],
-  left: []
+  left: [1, 2, 3]
 }, action) => {
   switch (action.type) {
     case SELECT:
-      return Object.assign({},
-        state,
-        {
-          selected: [...state.selected, action.payload],
-          left: state.left.filter(id => id !== action.payload)
-        }
-      )
+      return {
+        ...state,
+        selected: [...state.selected, action.payload],
+        left: state.left.filter((id) => id !== action.payload)
+      }
     default:
       return state
   }
