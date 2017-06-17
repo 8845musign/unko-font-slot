@@ -1,6 +1,11 @@
-import { createStore, combineReducers, compose } from 'redux'
+import {
+  createStore,
+  combineReducers,
+  compose,
+  applyMiddleware
+} from 'redux'
 
-import gameReducer from '../modules/game'
+import gameReducer, { lotteryMiddleware } from '../modules/game'
 import membersReducer from '../modules/members'
 
 const composeEnhancers =
@@ -8,7 +13,7 @@ const composeEnhancers =
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose
 
-const enhancer = composeEnhancers()
+const enhancer = composeEnhancers(applyMiddleware(lotteryMiddleware))
 
 const rootReducer = combineReducers({
   game: gameReducer,

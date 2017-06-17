@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Link from 'next/link'
 
-import { select } from '../modules/game'
+import { lottery } from '../modules/game'
 
 const onClick = select => () => {
   select(1)
@@ -22,7 +22,7 @@ class indexContainer extends Component {
         <Link href='result'><a>result</a></Link>
         <p>{getSelectedMembarName(this.props.members, this.props.selected)}</p>
 
-        <button onClick={onClick(this.props.select)}>next</button>
+        <button onClick={onClick(this.props.lottery)}>next</button>
       </div>
     )
   }
@@ -37,7 +37,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    select: bindActionCreators(select, dispatch)
+    lottery: bindActionCreators(lottery, dispatch)
   }
 }
 
