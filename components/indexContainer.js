@@ -2,6 +2,7 @@ import { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 
 import { lottery } from '../modules/game'
 
@@ -26,6 +27,12 @@ class indexContainer extends Component {
       </div>
     )
   }
+}
+
+indexContainer.propTypes = {
+  selected: PropTypes.array.isRequired,
+  members: PropTypes.object.isRequired,
+  lottery: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {

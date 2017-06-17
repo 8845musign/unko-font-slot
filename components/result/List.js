@@ -1,4 +1,6 @@
-export default ({ selected, members }) => {
+import PropTypes from 'prop-types'
+
+const List = ({ selected, members }) => {
   const item = (selectedMember) => {
     const m = members[selectedMember]
     return (
@@ -12,3 +14,10 @@ export default ({ selected, members }) => {
     </ul>
   )
 }
+
+List.propTypes = {
+  selected: PropTypes.array.isRequired,
+  members: PropTypes.object.isRequired
+}
+
+export default List
