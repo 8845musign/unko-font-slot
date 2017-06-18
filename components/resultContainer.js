@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 import List from './result/List'
 
-class resultContainer extends Component {
+class ResultContainer extends Component {
   render () {
     return (
       <div>
@@ -20,7 +20,7 @@ class resultContainer extends Component {
   }
 }
 
-resultContainer.propTypes = {
+ResultContainer.propTypes = {
   selected: PropTypes.array.isRequired,
   members: PropTypes.object.isRequired
 }
@@ -37,4 +37,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(resultContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(ResultContainer)

@@ -3,12 +3,12 @@ import React from 'react'
 import indexStore from '../stores/indexStore'
 import withRedux from 'next-redux-wrapper'
 
-import Index from '../components/indexContainer'
+import IndexContainer from '../components/IndexContainer'
 
 class IndexPage extends React.Component {
   render () {
     return (
-      <Index />
+      <IndexContainer />
     )
   }
 }

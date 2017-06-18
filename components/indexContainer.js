@@ -16,7 +16,7 @@ const getSelectedMembarName = (members, selected) => {
   return members[selected[selected.length - 1]].name
 }
 
-class indexContainer extends Component {
+class IndexContainer extends Component {
   render () {
     return (
       <div>
@@ -29,7 +29,7 @@ class indexContainer extends Component {
   }
 }
 
-indexContainer.propTypes = {
+IndexContainer.propTypes = {
   selected: PropTypes.array.isRequired,
   isEnd: PropTypes.bool.isRequired,
   members: PropTypes.object.isRequired,
@@ -52,4 +52,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(indexContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(IndexContainer)
