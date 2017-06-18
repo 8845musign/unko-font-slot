@@ -2,13 +2,24 @@ import PropTypes from 'prop-types'
 
 import Pattern from './Pattern'
 
+// For loop, copy first member to last.
+const createLoopPattern = (pattern) => {
+  if (pattern.length === 0) return pattern
+
+  const first = pattern[0]
+
+  return [...pattern, first]
+}
+
 const Slot = ({ pattern, members }) => {
-  const item = (id) => {
+  const item = (id, i) => {
     const m = members[id]
     return (
-      <Pattern member={m} key={id} />
+      <Pattern member={m} key={i} />
     )
   }
+
+  const loopPattern = createLoopPattern(pattern)
 
   return (
     <div className='frame'>
@@ -30,7 +41,7 @@ const Slot = ({ pattern, members }) => {
         }
       `}</style>
       <ul>
-        {pattern.map(item)}
+        {loopPattern.map(item)}
       </ul>
     </div>
   )
