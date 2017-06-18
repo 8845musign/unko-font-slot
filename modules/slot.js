@@ -16,7 +16,7 @@ const slotReducer = (state = {
   frame: 0,
   pattern: [],
   reelTop: 0,
-  reelSpeed: 40
+  reelSpeed: 20
 }, action) => {
   switch (action.type) {
     case START:
@@ -98,7 +98,7 @@ const moveTop = (top, speed) => {
   return moveTop
 }
 
-const resistance = 0.99
+const resistance = 0.98
 export const slotAnimeMiddleware = ({ dispatch, getState }) => next => action => {
   if (action.type === ANIME) {
     const state = getState()
