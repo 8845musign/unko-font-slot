@@ -15,7 +15,8 @@ const slotReducer = (state = {
   isAnimating: false,
   frame: 0,
   pattern: [],
-  reelTop: 0
+  reelTop: 0,
+  reelSpeed: 40
 }, action) => {
   switch (action.type) {
     case START:
@@ -24,7 +25,8 @@ const slotReducer = (state = {
         {
           isAnimating: true,
           pattern: action.payload,
-          reelTop: 0
+          reelTop: 0,
+          reelSpeed: 40
         }
       )
     case END:
@@ -40,7 +42,8 @@ const slotReducer = (state = {
         state,
         {
           frame: state.frame + 1,
-          reelTop: action.payload
+          reelTop: action.payload.top,
+          reelSpeed: action.payload.speed
         }
       )
     default:
@@ -86,8 +89,8 @@ export const slotStartMiddleware = ({ dispatch, getState }) => next => action =>
   next(action)
 }
 
-const moveTop = (top) => {
-  let moveTop = top - 40
+const moveTop = (top, speed) => {
+  let moveTop = top - speed
 
   // loop
   if (moveTop < -300) moveTop = 0
@@ -95,12 +98,17 @@ const moveTop = (top) => {
   return moveTop
 }
 
+const resistance = 0.99
 export const slotAnimeMiddleware = ({ dispatch, getState }) => next => action => {
   if (action.type === ANIME) {
     const state = getState()
 
-    const top = moveTop(state.slot.reelTop)
-    action.payload = top
+    const speed = state.slot.reelSpeed
+    const top = moveTop(state.slot.reelTop, speed)
+    action.payload = {
+      top: top,
+      speed: speed * resistance
+    }
   }
 
   next(action)
