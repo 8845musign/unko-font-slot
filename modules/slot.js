@@ -13,13 +13,17 @@ export const anime = createAction(ANIME)
 
 const slotReducer = (state = {
   isAnimating: false,
-  frame: 0
+  frame: 0,
+  pattern: []
 }, action) => {
   switch (action.type) {
     case START:
       return Object.assign({},
         state,
-        { isAnimating: true }
+        {
+          isAnimating: true,
+          pattern: action.payload
+        }
       )
     case END:
       return Object.assign({},
@@ -41,11 +45,28 @@ const slotReducer = (state = {
 
 export default slotReducer
 
+const createPattern = (state) => {
+  const { game, members } = state
+  const { selected } = game
+
+  const chance = selected[selected.length - 1]
+
+  const dummy = members.allIds.filter(id => id !== chance)
+
+  return [
+    ...dummy,
+    chance
+  ]
+}
+
 export const slotStartMiddleware = ({ dispatch, getState }) => next => action => {
   if (action.type === START) {
+    const state = getState()
+    const pattern = createPattern(state)
+    action.payload = pattern
+
     const loop = () => {
       dispatch(anime())
-
       const state = getState()
 
       if (state.slot.frame <= ANIMATION_TIME) {
