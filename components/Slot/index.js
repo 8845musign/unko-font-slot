@@ -11,9 +11,28 @@ const Slot = ({ pattern, members }) => {
   }
 
   return (
-    <ul>
-      {pattern.map(item)}
-    </ul>
+    <div className='frame'>
+      <style jsx>{`
+        .frame {
+          position: relative;
+          width: 100px;
+          height: 100px;
+          overflow: hidden;
+        }
+
+        ul {
+          position: absolute;
+          top: 0;
+          left: 0;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+      `}</style>
+      <ul>
+        {pattern.map(item)}
+      </ul>
+    </div>
   )
 }
 

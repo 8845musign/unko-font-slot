@@ -5,7 +5,9 @@ const Pattern = ({ member }) => {
     <li>
       <style jsx>{`
         li {
-          background: red;
+          width: 100px;
+          height: 100px;
+          background-color: red;
         }
       `}</style>
       {member.name}
