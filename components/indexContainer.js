@@ -6,6 +6,8 @@ import PropTypes from 'prop-types'
 
 import { lottery } from '../modules/game'
 
+import Slot from './Slot'
+
 const onClick = select => () => {
   select(1)
 }
@@ -23,6 +25,8 @@ class IndexContainer extends Component {
         <Link href='result'><a>result</a></Link>
         <p>{getSelectedMembarName(this.props.members, this.props.selected)}</p>
 
+        <Slot pattern={this.props.pattern} members={this.props.members} />
+
         <button onClick={onClick(this.props.lottery)} disabled={this.props.isEnd || this.props.isAnimating}>next</button>
       </div>
     )
@@ -34,7 +38,8 @@ IndexContainer.propTypes = {
   isEnd: PropTypes.bool.isRequired,
   members: PropTypes.object.isRequired,
   lottery: PropTypes.func.isRequired,
-  isAnimating: PropTypes.bool.isRequired
+  isAnimating: PropTypes.bool.isRequired,
+  pattern: PropTypes.array.isRequired
 }
 
 const mapStateToProps = (state) => {
@@ -42,7 +47,8 @@ const mapStateToProps = (state) => {
     selected: state.game.selected,
     isEnd: state.game.isEnd,
     members: state.members.byId,
-    isAnimating: state.slot.isAnimating
+    isAnimating: state.slot.isAnimating,
+    pattern: state.slot.pattern
   }
 }
 
