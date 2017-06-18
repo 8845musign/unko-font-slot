@@ -9,17 +9,18 @@ import gameReducer, {
   lotteryMiddleware, selectMiddleware
 } from '../modules/game'
 import membersReducer from '../modules/members'
-import slotReducer, {
-  slotStartMiddleware,
-  slotAnimeMiddleware
-} from '../modules/slot'
+import slotReducer, { middlewares as slotMiddlewares } from '../modules/slot'
 
 const composeEnhancers =
   typeof window === 'object' &&
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose
 
-const enhancer = composeEnhancers(applyMiddleware(lotteryMiddleware, selectMiddleware, slotStartMiddleware, slotAnimeMiddleware))
+const enhancer = composeEnhancers(applyMiddleware(
+  lotteryMiddleware,
+  selectMiddleware,
+  ...slotMiddlewares
+))
 
 const rootReducer = combineReducers({
   game: gameReducer,
