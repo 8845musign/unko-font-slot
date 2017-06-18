@@ -23,7 +23,7 @@ class indexContainer extends Component {
         <Link href='result'><a>result</a></Link>
         <p>{getSelectedMembarName(this.props.members, this.props.selected)}</p>
 
-        <button onClick={onClick(this.props.lottery)} disabled={this.props.isEnd}>next</button>
+        <button onClick={onClick(this.props.lottery)} disabled={this.props.isEnd || this.props.isAnimating}>next</button>
       </div>
     )
   }
@@ -33,14 +33,16 @@ indexContainer.propTypes = {
   selected: PropTypes.array.isRequired,
   isEnd: PropTypes.bool.isRequired,
   members: PropTypes.object.isRequired,
-  lottery: PropTypes.func.isRequired
+  lottery: PropTypes.func.isRequired,
+  isAnimating: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = (state) => {
   return {
     selected: state.game.selected,
     isEnd: state.game.isEnd,
-    members: state.members.byId
+    members: state.members.byId,
+    isAnimating: state.slot.isAnimating
   }
 }
 

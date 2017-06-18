@@ -7,18 +7,18 @@ export const start = createAction(START)
 export const end = createAction(END)
 
 const slotReducer = (state = {
-  isAnimatig: false
+  isAnimating: false
 }, action) => {
   switch (action.type === START) {
     case START:
       return Object.assign({},
         state,
-        { isAnimatig: true }
+        { isAnimating: true }
       )
     case END:
       return Object.assign({},
         state,
-        { isAnimatig: false }
+        { isAnimating: false }
       )
     default:
       return state
