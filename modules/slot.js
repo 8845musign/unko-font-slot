@@ -81,7 +81,7 @@ export const slotStartMiddleware = ({ dispatch, getState }) => next => action =>
         dispatch(end())
       }
     }
-    loop()
+    window.requestAnimationFrame(loop)
   }
 
   next(action)
