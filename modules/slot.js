@@ -14,7 +14,8 @@ export const anime = createAction(ANIME)
 const slotReducer = (state = {
   isAnimating: false,
   frame: 0,
-  pattern: []
+  pattern: [],
+  reelTop: 0
 }, action) => {
   switch (action.type) {
     case START:
@@ -36,7 +37,10 @@ const slotReducer = (state = {
     case ANIME:
       return Object.assign({},
         state,
-        { frame: state.frame + 1 }
+        {
+          frame: state.frame + 1,
+          reelTop: action.payload
+        }
       )
     default:
       return state
@@ -76,6 +80,26 @@ export const slotStartMiddleware = ({ dispatch, getState }) => next => action =>
       }
     }
     loop()
+  }
+
+  next(action)
+}
+
+const moveTop = (top) => {
+  let moveTop = top - 40
+
+  // loop
+  if (moveTop < -300) moveTop = 0
+
+  return moveTop
+}
+
+export const slotAnimeMiddleware = ({ dispatch, getState }) => next => action => {
+  if (action.type === ANIME) {
+    const state = getState()
+
+    const top = moveTop(state.slot.reelTop)
+    action.payload = top
   }
 
   next(action)

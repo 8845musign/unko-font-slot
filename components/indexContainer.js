@@ -25,7 +25,11 @@ class IndexContainer extends Component {
         <Link href='result'><a>result</a></Link>
         <p>{getSelectedMembarName(this.props.members, this.props.selected)}</p>
 
-        <Slot pattern={this.props.pattern} members={this.props.members} />
+        <Slot
+          pattern={this.props.pattern}
+          members={this.props.members}
+          reelTop={this.props.reelTop}
+        />
 
         <button onClick={onClick(this.props.lottery)} disabled={this.props.isEnd || this.props.isAnimating}>next</button>
       </div>
@@ -39,7 +43,8 @@ IndexContainer.propTypes = {
   members: PropTypes.object.isRequired,
   lottery: PropTypes.func.isRequired,
   isAnimating: PropTypes.bool.isRequired,
-  pattern: PropTypes.array.isRequired
+  pattern: PropTypes.array.isRequired,
+  reelTop: PropTypes.number.isRequired
 }
 
 const mapStateToProps = (state) => {
@@ -48,7 +53,8 @@ const mapStateToProps = (state) => {
     isEnd: state.game.isEnd,
     members: state.members.byId,
     isAnimating: state.slot.isAnimating,
-    pattern: state.slot.pattern
+    pattern: state.slot.pattern,
+    reelTop: state.slot.reelTop
   }
 }
 

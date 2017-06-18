@@ -11,7 +11,7 @@ const createLoopPattern = (pattern) => {
   return [...pattern, first]
 }
 
-const Slot = ({ pattern, members }) => {
+const Slot = ({ pattern, members, reelTop }) => {
   const item = (id, i) => {
     const m = members[id]
     return (
@@ -20,6 +20,10 @@ const Slot = ({ pattern, members }) => {
   }
 
   const loopPattern = createLoopPattern(pattern)
+
+  const reelStyle = {
+    top: reelTop
+  }
 
   return (
     <div className='frame'>
@@ -40,7 +44,7 @@ const Slot = ({ pattern, members }) => {
           list-style: none;
         }
       `}</style>
-      <ul>
+      <ul style={reelStyle}>
         {loopPattern.map(item)}
       </ul>
     </div>
@@ -49,7 +53,8 @@ const Slot = ({ pattern, members }) => {
 
 Slot.propTypes = {
   pattern: PropTypes.array.isRequired,
-  members: PropTypes.object.isRequired
+  members: PropTypes.object.isRequired,
+  reelTop: PropTypes.number.isRequired
 }
 
 export default Slot
