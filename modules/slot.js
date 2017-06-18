@@ -98,7 +98,15 @@ const moveTop = (top, speed) => {
   return moveTop
 }
 
-const resistance = 0.98
+const calcNextSpeed = (prevSpeed) => {
+  const resistance = 0.98
+  let nextSpeed = prevSpeed * resistance
+
+  if (nextSpeed < 2) nextSpeed = 2
+
+  return nextSpeed
+}
+
 export const slotAnimeMiddleware = ({ dispatch, getState }) => next => action => {
   if (action.type === ANIME) {
     const state = getState()
@@ -107,7 +115,7 @@ export const slotAnimeMiddleware = ({ dispatch, getState }) => next => action =>
     const top = moveTop(state.slot.reelTop, speed)
     action.payload = {
       top: top,
-      speed: speed * resistance
+      speed: calcNextSpeed(speed)
     }
   }
 
