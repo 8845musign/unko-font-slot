@@ -75,7 +75,7 @@ export const slotStartMiddleware = ({ dispatch, getState }) => next => action =>
       const state = getState()
 
       const { reelSpeed, reelTop } = state.slot
-      if (reelSpeed > 2 || (reelTop > -200 || reelTop < -203)) {
+      if (reelSpeed > 1 || (reelTop > -200 || reelTop < -203)) {
         window.requestAnimationFrame(loop)
       } else {
         dispatch(end())
@@ -100,7 +100,7 @@ const calcNextSpeed = (prevSpeed) => {
   const resistance = 0.98
   let nextSpeed = prevSpeed * resistance
 
-  if (nextSpeed < 2) nextSpeed = 2
+  if (nextSpeed < 1) nextSpeed = 1
 
   return nextSpeed
 }
