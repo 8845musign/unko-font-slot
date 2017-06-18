@@ -24,7 +24,10 @@ const slotReducer = (state = {
     case END:
       return Object.assign({},
         state,
-        { isAnimating: false }
+        {
+          isAnimating: false,
+          frame: 0
+        }
       )
     case ANIME:
       return Object.assign({},
