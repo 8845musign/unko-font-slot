@@ -23,7 +23,8 @@ const slotReducer = (state = {
         state,
         {
           isAnimating: true,
-          pattern: action.payload
+          pattern: action.payload,
+          reelTop: 0
         }
       )
     case END:
