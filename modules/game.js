@@ -1,4 +1,5 @@
 import { createAction } from 'redux-actions'
+import { start as startSlot } from './slot'
 
 export const SELECT = 'modules/game/SELECT'
 export const LOTTERY = 'modules/game/LOTTERY'
@@ -27,6 +28,7 @@ export const lotteryMiddleware = ({ dispatch, getState }) => next => action => {
     const num = getRand(candidate.length - 1)
     const selectedId = candidate[num]
     dispatch(select(selectedId))
+    dispatch(startSlot())
   } else {
     next(action)
   }
