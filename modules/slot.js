@@ -1,8 +1,5 @@
 import { createAction } from 'redux-actions'
 
-// アニメーション時間 60FPS
-const ANIMATION_TIME = 60 * 3
-
 export const START = 'modules/slot/START'
 export const END = 'modules/slot/END'
 export const ANIME = 'modules/slot/ANIME'
@@ -77,7 +74,8 @@ export const slotStartMiddleware = ({ dispatch, getState }) => next => action =>
       dispatch(anime())
       const state = getState()
 
-      if (state.slot.frame <= ANIMATION_TIME) {
+      const { reelSpeed, reelTop } = state.slot
+      if (reelSpeed > 2 || (reelTop > -200 || reelTop < -203)) {
         window.requestAnimationFrame(loop)
       } else {
         dispatch(end())
