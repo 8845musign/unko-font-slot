@@ -12,18 +12,11 @@ const onClick = select => () => {
   select(1)
 }
 
-const getSelectedMembarName = (members, selected) => {
-  if (selected.length <= 0) return 'press next button'
-
-  return members[selected[selected.length - 1]].name
-}
-
 class IndexContainer extends Component {
   render () {
     return (
       <div>
         <Link href='result'><a>result</a></Link>
-        <p>{getSelectedMembarName(this.props.members, this.props.selected)}</p>
 
         <Slot
           pattern={this.props.pattern}
@@ -38,7 +31,6 @@ class IndexContainer extends Component {
 }
 
 IndexContainer.propTypes = {
-  selected: PropTypes.array.isRequired,
   isEnd: PropTypes.bool.isRequired,
   members: PropTypes.object.isRequired,
   lottery: PropTypes.func.isRequired,
@@ -49,7 +41,6 @@ IndexContainer.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    selected: state.game.selected,
     isEnd: state.game.isEnd,
     members: state.members.byId,
     isAnimating: state.slot.isAnimating,
