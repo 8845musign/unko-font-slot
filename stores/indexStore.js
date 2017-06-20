@@ -29,7 +29,28 @@ const rootReducer = combineReducers({
 })
 
 const indexStore = () => {
-  return createStore(rootReducer, {}, enhancer)
+  return createStore(rootReducer, {
+    members: {
+      byId: {
+        1: {
+          id: '1',
+          name: 'sample taro',
+          image: 'image'
+        },
+        2: {
+          id: '2',
+          name: 'sample taro1',
+          image: 'image'
+        },
+        3: {
+          id: '3',
+          name: 'sample taro2',
+          image: 'image'
+        }
+      },
+      allIds: [1, 2, 3]
+    }
+  }, enhancer)
 }
 
 export default indexStore
