@@ -18,7 +18,6 @@ export const middlewares = [
 
 const slotReducer = (state = {
   isAnimating: false,
-  frame: 0,
   pattern: [],
   reelTop: 0,
   reelSpeed: 20
@@ -38,15 +37,13 @@ const slotReducer = (state = {
       return Object.assign({},
         state,
         {
-          isAnimating: false,
-          frame: 0
+          isAnimating: false
         }
       )
     case ANIME:
       return Object.assign({},
         state,
         {
-          frame: state.frame + 1,
           reelTop: action.payload.top,
           reelSpeed: action.payload.speed
         }
