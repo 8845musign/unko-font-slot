@@ -9,6 +9,7 @@ const List = ({ selected, members }) => {
           li {
             width: 20%;
             padding: 0 12px;
+            margin-bottom: 20px;
             float: left;
           }
 
@@ -61,6 +62,8 @@ const List = ({ selected, members }) => {
           padding: 40px 0 0;
           list-style: none;
           width: 1500px;
+          overflow-y: auto;
+          height: calc(1080px - 40px);
         }
       `}</style>
       {selected.map(item)}
