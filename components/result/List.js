@@ -5,7 +5,7 @@ const List = ({ selected, members }) => {
     const m = members[selectedMember]
     return (
       <li key={m.id}>
-        <style jx>{`
+        <style jsx>{`
           li {
             width: 20%;
             padding: 0 12px;
@@ -44,6 +44,7 @@ const List = ({ selected, members }) => {
             text-overflow: ellipsis;
           }
         `}</style>
+
         <figure className='item'>
           <img src={m.image} alt={m.name} />
           <figcaption title={m.name}>{m.name}</figcaption>
