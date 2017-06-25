@@ -13,6 +13,28 @@ const onClick = select => () => {
 }
 
 class IndexContainer extends Component {
+  getSelectedMember () {
+    if (this.props.selected.length <= 0) return null
+
+    const id = this.props.selected[this.props.selected.length - 1]
+
+    if (id !== void (0) && id !== null) {
+      return this.props.members[id]
+    } else {
+      return null
+    }
+  }
+
+  renderSelected () {
+    const member = this.getSelectedMember()
+
+    if (member && !this.props.isAnimating) {
+      return member.name
+    } else {
+      return null
+    }
+  }
+
   render () {
     return (
       <div className='container'>
@@ -66,6 +88,10 @@ class IndexContainer extends Component {
             width: 1160px;
             background-color: transparent;
             border: none;
+            color: #fff;
+            text-align: center;
+            line-height: 165px;
+            font-size: 72px;
           }
         `}</style>
 
@@ -84,7 +110,9 @@ class IndexContainer extends Component {
           <a className='link-result'><img src='/static/images/btn-result.png' alt='今までの結果' /></a>
         </Link>
 
-        <button className='btn-next' onClick={onClick(this.props.lottery)} disabled={this.props.isEnd || this.props.isAnimating} aria-label='next' />
+        <button className='btn-next' onClick={onClick(this.props.lottery)} disabled={this.props.isEnd || this.props.isAnimating} aria-label='next'>
+          {this.renderSelected()}
+        </button>
       </div>
     )
   }
@@ -96,7 +124,8 @@ IndexContainer.propTypes = {
   lottery: PropTypes.func.isRequired,
   isAnimating: PropTypes.bool.isRequired,
   pattern: PropTypes.array.isRequired,
-  reelTop: PropTypes.number.isRequired
+  reelTop: PropTypes.number.isRequired,
+  selected: PropTypes.array.isRequired
 }
 
 const mapStateToProps = (state) => {
@@ -105,7 +134,8 @@ const mapStateToProps = (state) => {
     members: state.members.byId,
     isAnimating: state.slot.isAnimating,
     pattern: state.slot.pattern,
-    reelTop: state.slot.reelTop
+    reelTop: state.slot.reelTop,
+    selected: state.game.selected
   }
 }
 
