@@ -8,7 +8,25 @@ import List from './result/List'
 class ResultContainer extends Component {
   render () {
     return (
-      <div>
+      <div className='container'>
+        <style jsx global>{`
+          html,
+          body {
+            margin: 0;
+            padding: 0;
+          }
+        `}</style>
+
+        <style jsx>{`
+          .container {
+            position: relative;
+            width: 1920px;
+            height: 1080px;
+            margin: auto;
+            background-image: url('/static/images/bg.png');
+          }
+        `}</style>
+
         <Link href='/'><a>bingo</a></Link>
 
         <List
