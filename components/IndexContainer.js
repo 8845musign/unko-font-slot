@@ -47,8 +47,8 @@ class IndexContainer extends Component {
             position: absolute;
             width: 750px;
             height: 750px;
-            top: 60px;
-            left: 580px;
+            top: 67px;
+            left: 583px;
           }
 
           .link-result {
