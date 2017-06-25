@@ -30,8 +30,8 @@ const Slot = ({ pattern, members, reelTop }) => {
       <style jsx>{`
         .frame {
           position: relative;
-          width: 100px;
-          height: 100px;
+          width: 750px;
+          height: 750px;
           overflow: hidden;
         }
 

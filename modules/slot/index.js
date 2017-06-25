@@ -16,11 +16,13 @@ export const middlewares = [
   animeMiddleware
 ]
 
+const REEL_SPEED = 300
+
 const slotReducer = (state = {
   isAnimating: false,
   pattern: [],
   reelTop: 0,
-  reelSpeed: 20
+  reelSpeed: REEL_SPEED
 }, action) => {
   switch (action.type) {
     case START:
@@ -30,7 +32,7 @@ const slotReducer = (state = {
           isAnimating: true,
           pattern: action.payload,
           reelTop: 0,
-          reelSpeed: 40
+          reelSpeed: REEL_SPEED
         }
       )
     case END:

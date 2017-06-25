@@ -29,7 +29,7 @@ const slotStartMiddleware = ({ dispatch, getState }) => next => action => {
       const state = getState()
 
       const { reelSpeed, reelTop } = state.slot
-      if (reelSpeed > 1 || (reelTop > -200 || reelTop < -203)) {
+      if (reelSpeed > 10 || (reelTop > -1500 || reelTop < -1520)) {
         window.requestAnimationFrame(loop)
       } else {
         dispatch(end())

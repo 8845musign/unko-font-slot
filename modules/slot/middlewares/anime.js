@@ -1,19 +1,22 @@
 import { ANIME } from '../'
 
+const PATTERN_HEIGHT = 750
+const MIN_SPEED = 5
+const RESISTANCE = 0.99
+
 const moveTop = (top, speed) => {
   let moveTop = top - speed
 
   // loop
-  if (moveTop < -300) moveTop = 0
+  if (moveTop < -(PATTERN_HEIGHT * 3)) moveTop = 0
 
   return moveTop
 }
 
 const calcNextSpeed = (prevSpeed) => {
-  const resistance = 0.98
-  let nextSpeed = prevSpeed * resistance
+  let nextSpeed = prevSpeed * RESISTANCE
 
-  if (nextSpeed < 1) nextSpeed = 1
+  if (nextSpeed < MIN_SPEED) nextSpeed = MIN_SPEED
 
   return nextSpeed
 }

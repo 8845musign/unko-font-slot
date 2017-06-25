@@ -43,6 +43,14 @@ class IndexContainer extends Component {
             cursor: pointer;
           }
 
+          .slot {
+            position: absolute;
+            width: 750px;
+            height: 750px;
+            top: 60px;
+            left: 580px;
+          }
+
           .link-result {
             display: inline-block;
             position: absolute;
@@ -62,11 +70,14 @@ class IndexContainer extends Component {
         `}</style>
 
         <div className='game'>
-          <Slot
-            pattern={this.props.pattern}
-            members={this.props.members}
-            reelTop={this.props.reelTop}
-          />
+          <div className='slot'>
+            <Slot
+              pattern={this.props.pattern}
+              members={this.props.members}
+              reelTop={this.props.reelTop}
+            />
+          </div>
+
         </div>
 
         <Link href='result'>

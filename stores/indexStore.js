@@ -35,17 +35,17 @@ const indexStore = () => {
         1: {
           id: '1',
           name: 'sample taro',
-          image: 'image'
+          image: '/static/images/photos/dummy-1.jpg'
         },
         2: {
           id: '2',
           name: 'sample taro1',
-          image: 'image'
+          image: '/static/images/photos/dummy-2.jpg'
         },
         3: {
           id: '3',
           name: 'sample taro2',
-          image: 'image'
+          image: '/static/images/photos/dummy-3.jpg'
         }
       },
       allIds: [1, 2, 3]

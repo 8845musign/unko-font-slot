@@ -5,12 +5,17 @@ const Pattern = ({ member }) => {
     <li>
       <style jsx>{`
         li {
-          width: 100px;
-          height: 100px;
-          background-color: red;
+          width: 750px;
+          height: 750px;
+        }
+
+        img {
+          width: 750px;
+          height: 750px;
         }
       `}</style>
-      {member.name}
+
+      <img src={member.image} alt={member.name} />
     </li>
   )
 }
