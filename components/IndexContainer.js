@@ -93,9 +93,52 @@ class IndexContainer extends Component {
             line-height: 165px;
             font-size: 72px;
           }
+
+          .light-left {
+            position: absolute;
+            top:  -1px;
+            left: 480px;
+          }
+          
+          .light-left.on {
+            animation:blink-left 2.0s step-end infinite alternate;
+          }
+
+          .light-right {
+            position: absolute;
+            top:  -1px;
+            right: 480px;
+            
+          }
+
+          .light-right.on {
+            animation:blink-right 2.0s step-end infinite alternate;
+          }
+
+          .on {
+            z-index: 2;
+            opacity: 0;
+          }
+
+          .off {
+            z-index: 1;
+          }
+
+          @keyframes blink-left {
+            34%,66%,100% {opacity:0;}
+            0%,33%,67%,99% {opacity:1;}
+          }
+
+          @keyframes blink-right {
+            34%,66%,100% {opacity:1;}
+            0%,33%,67%,99% {opacity:0;}
+          }
         `}</style>
 
         <div className='game'>
+          <img className='light-left on' src='/static/images/light-on.png' alt='' />
+          <img className='light-left off' src='/static/images/light-off.png' alt='' />
+
           <div className='slot'>
             <Slot
               pattern={this.props.pattern}
@@ -104,6 +147,8 @@ class IndexContainer extends Component {
             />
           </div>
 
+          <img className='light-right on' src='/static/images/light-on.png' alt='' />
+          <img className='light-right off' src='/static/images/light-off.png' alt='' />
         </div>
 
         <Link href='result'>
