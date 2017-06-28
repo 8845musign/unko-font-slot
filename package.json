@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/8845musign/bingo-2017#readme",
   "dependencies": {
+    "classnames": "^2.2.5",
     "next": "^2.4.4",
     "next-redux-wrapper": "^1.1.2",
     "prop-types": "^15.5.10",
