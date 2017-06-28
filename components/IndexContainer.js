@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 import { lottery } from '../modules/game'
 
@@ -35,9 +36,18 @@ class IndexContainer extends Component {
     }
   }
 
+  isResulting () {
+    return this.props.selected.length > 0 && !this.props.isAnimating
+  }
+
   render () {
+    const cssClass = classNames(
+      'container',
+      { 'container--result': this.isResulting() }
+    )
+
     return (
-      <div className='container'>
+      <div className={cssClass}>
         <style jsx global>{`
           html,
           body {
@@ -132,6 +142,11 @@ class IndexContainer extends Component {
           @keyframes blink-right {
             34%,66%,100% {opacity:1;}
             0%,33%,67%,99% {opacity:0;}
+          }
+
+          .container--result .light-right.on,
+          .container--result .light-left.on {
+            animation:blink-left 0.3s step-end infinite alternate;
           }
         `}</style>
 
