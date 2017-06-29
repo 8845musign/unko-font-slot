@@ -12,6 +12,7 @@ const END = 'modules/confetti/END'
 
 export const start = createAction(START)
 export const move = createAction(MOVE)
+export const end = createAction(END)
 
 export default (state = {
   isAnimating: false,
@@ -97,8 +98,11 @@ const animeMiddleware = ({ dispatch, getState }) => next => action => {
 }
 
 const moveMiddleware = ({ dispatch, getState }) => next => action => {
-  if (action.type === MOVE) {
-    const state = getState()
+  const state = getState()
+
+  if (action.type === MOVE && state.confetti.isAnimating === false) {
+    action.payload = []
+  } else if (action.type === MOVE) {
     const { tapes } = state.confetti
 
     const movedTapes = moveTapes(tapes)
