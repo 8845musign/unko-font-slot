@@ -98,10 +98,11 @@ class IndexContainer extends Component {
             width: 1160px;
             background-color: transparent;
             border: none;
-            color: #fff;
+            color: #ffe347;
             text-align: center;
             line-height: 165px;
             font-size: 72px;
+            text-shadow: 0 0 20px #ffdf2e;
           }
 
           .light-left {
