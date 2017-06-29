@@ -4,6 +4,8 @@ import {
   end
 } from '../'
 
+import { start as startConfetti } from '../../confetti'
+
 const createPattern = (state) => {
   const { game, members } = state
   const { selected } = game
@@ -33,6 +35,7 @@ const slotStartMiddleware = ({ dispatch, getState }) => next => action => {
         window.requestAnimationFrame(loop)
       } else {
         dispatch(end())
+        dispatch(startConfetti())
       }
     }
     window.requestAnimationFrame(loop)

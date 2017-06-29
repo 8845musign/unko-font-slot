@@ -46,7 +46,7 @@ export default (state = {
 }
 
 const moveTapes = (tapes) => {
-  const newTapes = _.deepClone(tapes)
+  const newTapes = _.cloneDeep(tapes)
   const moveTapes = newTapes.map((tape) => {
     tape.x = tape.x + tape.speed
     tape.y = tape.x * tape.slop
@@ -69,21 +69,26 @@ const createTape = () => {
     x: Math.floor(Math.random() * (STAGE_WIDTH + 1)),
     y: 0,
     speed: Math.floor(Math.random() * 100),
-    slop: (10 - Math.flooer(Math.random() * 6)) / 10
+    slop: (10 - Math.floor(Math.random() * 6)) / 10
   }
 }
 
 const animeMiddleware = ({ dispatch, getState }) => next => action => {
   if (action.type === START) {
     const loop = () => {
+      dispatch(move())
+
       const state = getState()
-
-      dispatch(move)
-
       if (state.confetti.isAnimating) {
-        window.requestAnimationFrame(loop)
+        // FIXME for develop
+        setTimeout(() => {
+          loop()
+        }, 5000)
+        // window.requestAnimationFrame(loop)
       }
     }
+
+    window.requestAnimationFrame(loop)
   }
 
   next(action)
@@ -91,16 +96,22 @@ const animeMiddleware = ({ dispatch, getState }) => next => action => {
 
 const moveMiddleware = ({ dispatch, getState }) => next => action => {
   if (action.type === MOVE) {
-    const state = getState
+    const state = getState()
     const { tapes } = state.confetti
 
     const movedTapes = moveTapes(tapes)
+
+    if (movedTapes.length === 0) {
+      for (let i = 0; i < 50; i++) {
+        movedTapes.push(createTape())
+      }
+    }
 
     if (movedTapes.lenght < TAPE_MAX) {
       movedTapes.push(createTape())
     }
 
-    action.payload = moveTapes(tapes)
+    action.payload = movedTapes
   }
 
   next(action)
