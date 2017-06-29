@@ -189,7 +189,8 @@ IndexContainer.propTypes = {
   isAnimating: PropTypes.bool.isRequired,
   pattern: PropTypes.array.isRequired,
   reelTop: PropTypes.number.isRequired,
-  selected: PropTypes.array.isRequired
+  selected: PropTypes.array.isRequired,
+  tapes: PropTypes.array.isRequired
 }
 
 const mapStateToProps = (state) => {
