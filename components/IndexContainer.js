@@ -8,6 +8,7 @@ import classNames from 'classnames'
 import { lottery } from '../modules/game'
 
 import Slot from './Slot'
+import Confetti from './Confetti'
 
 const onClick = select => () => {
   select(1)
@@ -174,6 +175,8 @@ class IndexContainer extends Component {
         <button className='btn-next' onClick={onClick(this.props.lottery)} disabled={this.props.isEnd || this.props.isAnimating} aria-label='next'>
           {this.renderSelected()}
         </button>
+
+        <Confetti tapes={this.props.tapes} />
       </div>
     )
   }
@@ -196,7 +199,8 @@ const mapStateToProps = (state) => {
     isAnimating: state.slot.isAnimating,
     pattern: state.slot.pattern,
     reelTop: state.slot.reelTop,
-    selected: state.game.selected
+    selected: state.game.selected,
+    tapes: state.confetti.tapes
   }
 }
 

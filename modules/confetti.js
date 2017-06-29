@@ -1,10 +1,10 @@
 import { createAction } from 'redux-actions'
 import _ from 'lodash'
 
-const STAGE_HEIGHT = 1920
-const STAGE_WIDTH = 1080
+const STAGE_HEIGHT = 1080
+const STAGE_WIDTH = 1920
 
-const TAPE_MAX = 300
+const TAPE_MAX = 70
 
 const START = 'modules/confetti/START'
 const MOVE = 'modules/confetti/MOVE'
@@ -48,8 +48,10 @@ export default (state = {
 const moveTapes = (tapes) => {
   const newTapes = _.cloneDeep(tapes)
   const moveTapes = newTapes.map((tape) => {
-    tape.x = tape.x + tape.speed
-    tape.y = tape.x * tape.slop
+    tape.x = tape.x + tape.speedX
+    tape.y = tape.y + tape.speedY
+
+    return tape
   })
 
   const filteredTapes = moveTapes.filter((tape) => {
@@ -61,15 +63,19 @@ const moveTapes = (tapes) => {
     )
   })
 
-  return filteredTapes
+  if (filteredTapes) {
+    return filteredTapes
+  } else {
+    return []
+  }
 }
 
 const createTape = () => {
   return {
     x: Math.floor(Math.random() * (STAGE_WIDTH + 1)),
     y: 0,
-    speed: Math.floor(Math.random() * 100),
-    slop: (10 - Math.floor(Math.random() * 6)) / 10
+    speedX: 5 - Math.floor(Math.random() * 11),
+    speedY: 2 + Math.floor(Math.random() * 11)
   }
 }
 
@@ -80,11 +86,7 @@ const animeMiddleware = ({ dispatch, getState }) => next => action => {
 
       const state = getState()
       if (state.confetti.isAnimating) {
-        // FIXME for develop
-        setTimeout(() => {
-          loop()
-        }, 5000)
-        // window.requestAnimationFrame(loop)
+        window.requestAnimationFrame(loop)
       }
     }
 
@@ -107,7 +109,7 @@ const moveMiddleware = ({ dispatch, getState }) => next => action => {
       }
     }
 
-    if (movedTapes.lenght < TAPE_MAX) {
+    if (movedTapes.length < TAPE_MAX) {
       movedTapes.push(createTape())
     }
 
