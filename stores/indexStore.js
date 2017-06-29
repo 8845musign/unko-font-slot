@@ -10,6 +10,7 @@ import gameReducer, {
 } from '../modules/game'
 import membersReducer from '../modules/members'
 import slotReducer, { middlewares as slotMiddlewares } from '../modules/slot'
+import confettiReducer, { middlewares as confettiMiddlewares } from '../modules/confetti'
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -19,13 +20,15 @@ const composeEnhancers =
 const enhancer = composeEnhancers(applyMiddleware(
   lotteryMiddleware,
   selectMiddleware,
-  ...slotMiddlewares
+  ...slotMiddlewares,
+  ...confettiMiddlewares
 ))
 
 const rootReducer = combineReducers({
   game: gameReducer,
   members: membersReducer,
-  slot: slotReducer
+  slot: slotReducer,
+  confetti: confettiReducer
 })
 
 const indexStore = () => {
