@@ -45,9 +45,15 @@ export const selectMiddleware = ({ dispatch, getState }) => next => action => {
   }
 }
 
+const leftInit = []
+
+for (let i = 1; i <= 59; i++) {
+  leftInit.push(i)
+}
+
 const gameReducer = (state = {
   selected: [],
-  left: [1, 2, 3],
+  left: leftInit,
   isEnd: false
 }, action) => {
   switch (action.type) {
