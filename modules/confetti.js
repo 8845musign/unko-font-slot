@@ -76,7 +76,8 @@ const createTape = () => {
     x: Math.floor(Math.random() * (STAGE_WIDTH + 1)),
     y: 0,
     speedX: 5 - Math.floor(Math.random() * 11),
-    speedY: 2 + Math.floor(Math.random() * 11)
+    speedY: 2 + Math.floor(Math.random() * 11),
+    color: '#' + Math.floor(Math.random() * 16777215).toString(16)
   }
 }
 

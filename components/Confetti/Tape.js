@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 const Tape = ({ tape }) => {
   const style = {
     left: tape.x,
-    top: tape.y
+    top: tape.y,
+    backgroundColor: tape.color
   }
 
   return (
@@ -13,7 +14,6 @@ const Tape = ({ tape }) => {
           position: absolute;
           width: 10px;
           height: 10px;
-          background: #FFF;
         }
       `}</style>
     </div>
