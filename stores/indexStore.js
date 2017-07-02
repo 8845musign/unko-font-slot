@@ -6,14 +6,13 @@ import {
 } from 'redux'
 
 import gameReducer, {
-  lotteryMiddleware, selectMiddleware
+  lotteryMiddleware,
+  selectMiddleware
 } from '../modules/game'
 import membersReducer from '../modules/members'
 import slotReducer, { middlewares as slotMiddlewares } from '../modules/slot'
 import confettiReducer, { middlewares as confettiMiddlewares } from '../modules/confetti'
 import resultReducer from '../modules/result'
-
-import initalState from './initialState'
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -35,8 +34,8 @@ const rootReducer = combineReducers({
   result: resultReducer
 })
 
-const indexStore = () => {
-  return createStore(rootReducer, initalState, enhancer)
+const indexStore = (initialState) => {
+  return createStore(rootReducer, initialState, enhancer)
 }
 
 export default indexStore

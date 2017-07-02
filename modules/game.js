@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions'
 import { start as startSlot } from './slot'
+import { INIT } from './initial'
 
 export const SELECT = 'modules/game/SELECT'
 export const LOTTERY = 'modules/game/LOTTERY'
@@ -45,18 +46,17 @@ export const selectMiddleware = ({ dispatch, getState }) => next => action => {
   }
 }
 
-const leftInit = []
-
-for (let i = 1; i <= 59; i++) {
-  leftInit.push(i)
-}
-
 const gameReducer = (state = {
   selected: [],
-  left: leftInit,
+  left: [],
   isEnd: false
 }, action) => {
   switch (action.type) {
+    case INIT:
+      return Object.assign({},
+        state,
+        { left: Object.keys(action.payload) }
+      )
     case SELECT:
       return {
         ...state,
