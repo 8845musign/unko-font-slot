@@ -6,7 +6,6 @@ const membersReducer = (state = {
 }, action) => {
   switch (action.type) {
     case INIT:
-      console.log(state)
       return Object.assign({},
         state,
         {
