@@ -1,14 +1,15 @@
 import { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import Link from 'next/link'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { lottery } from '../modules/game'
+import { show, hide } from '../modules/result'
 
 import Slot from './Slot'
 import Confetti from './Confetti'
+import ResultModal from './ResultModal'
 
 const onClick = select => () => {
   select(1)
@@ -152,6 +153,13 @@ class IndexContainer extends Component {
           }
         `}</style>
 
+        <ResultModal
+          members={this.props.members}
+          selected={this.props.selected}
+          isShow={this.props.resultIsShow}
+          hide={this.props.hide}
+        />
+
         <div className='game'>
           <img className='light-left on' src='/static/images/light-on.png' alt='' />
           <img className='light-left off' src='/static/images/light-off.png' alt='' />
@@ -168,9 +176,7 @@ class IndexContainer extends Component {
           <img className='light-right off' src='/static/images/light-off.png' alt='' />
         </div>
 
-        <Link href='result'>
-          <a className='link-result'><img src='/static/images/btn-result.png' alt='今までの結果' /></a>
-        </Link>
+        <a className='link-result' onClick={this.props.show}><img src='/static/images/btn-result.png' alt='今までの結果' /></a>
 
         <button className='btn-next' onClick={onClick(this.props.lottery)} disabled={this.props.isEnd || this.props.isAnimating} aria-label='next'>
           {this.renderSelected()}
@@ -201,13 +207,16 @@ const mapStateToProps = (state) => {
     pattern: state.slot.pattern,
     reelTop: state.slot.reelTop,
     selected: state.game.selected,
-    tapes: state.confetti.tapes
+    tapes: state.confetti.tapes,
+    resultIsShow: state.result.isShow
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    lottery: bindActionCreators(lottery, dispatch)
+    lottery: bindActionCreators(lottery, dispatch),
+    show: bindActionCreators(show, dispatch),
+    hide: bindActionCreators(hide, dispatch)
   }
 }
 
