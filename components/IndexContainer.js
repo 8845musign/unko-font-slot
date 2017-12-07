@@ -64,7 +64,7 @@ class IndexContainer extends Component {
             width: 1920px;
             height: 1080px;
             margin: auto;
-            background-image: url('/static/images/bg.png');
+            background-image: url('/static/images/bg.jpg');
           }
 
           .game {
