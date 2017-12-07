@@ -1,5 +1,5 @@
 {
-  "name": "bingo-2017",
+  "name": "unko-font-slot",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/8845musign/bingo-2017.git"
+    "url": "git+https://github.com/8845musign/unko-font-slot"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/8845musign/bingo-2017/issues"
+    "url": "https://github.com/8845musign/unko-font-slot/issues"
   },
-  "homepage": "https://github.com/8845musign/bingo-2017#readme",
+  "homepage": "https://github.com/8845musign/unko-font-slot#readme",
   "dependencies": {
     "classnames": "^2.2.5",
     "lodash": "^4.17.4",
