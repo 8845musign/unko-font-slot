@@ -176,8 +176,6 @@ class IndexContainer extends Component {
           <img className='light-right off' src='/static/images/light-off.png' alt='' />
         </div>
 
-        <a className='link-result' onClick={this.props.show}><img src='/static/images/btn-result.png' alt='今までの結果' /></a>
-
         <button className='btn-next' onClick={onClick(this.props.lottery)} disabled={this.props.isEnd || this.props.isAnimating} aria-label='next'>
           {this.renderSelected()}
         </button>

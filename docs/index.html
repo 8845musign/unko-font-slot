@@ -1,70 +1,527 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charSet="utf-8" class="next-head"/>
-      <style id="__jsx-656128260">html,body{margin:0;padding:0;}</style>
-      <style id="__jsx-2114457093">.container.jsx-1651943560{position:relative;width:1920px;height:1080px;margin:auto;background-image:url('./static/images/bg.jpg');}
-         .game.jsx-1651943560{position:absolute;top:0;left:0;width:1920px;height:1080px;background-image:url('./static/images/bg-game.png');cursor:pointer;}
-         .slot.jsx-1651943560{position:absolute;width:750px;height:750px;top:67px;left:583px;}
-         .link-result.jsx-1651943560{display:inline-block;position:absolute;top:20px;right:14px;}
-         .btn-next.jsx-1651943560{position:absolute;bottom:27px;left:380px;height:165px;width:1160px;background-color:transparent;border:none;color:#ffe347;text-align:center;line-height:165px;font-size:72px;text-shadow:0 0 20px #ffdf2e;}
-         .light-left.jsx-1651943560{position:absolute;top:-1px;left:480px;}
-         .light-left.on.jsx-1651943560{-webkit-animation:blink-left-jsx-1651943560 2.0s step-end infinite alternate;animation:blink-left-jsx-1651943560 2.0s step-end infinite alternate;}
-         .light-right.jsx-1651943560{position:absolute;top:-1px;right:480px;}
-         .light-right.on.jsx-1651943560{-webkit-animation:blink-right-jsx-1651943560 2.0s step-end infinite alternate;animation:blink-right-jsx-1651943560 2.0s step-end infinite alternate;}
-         .on.jsx-1651943560{z-index:2;opacity:0;}
-         .off.jsx-1651943560{z-index:1;}
-         @-webkit-keyframes blink-left-jsx-1651943560{34%,66%,100%{opacity:0;}0%,33%,67%,99%{opacity:1;}}
-         @keyframes blink-left-jsx-1651943560{34%,66%,100%{opacity:0;}0%,33%,67%,99%{opacity:1;}}
-         @-webkit-keyframes blink-right-jsx-1651943560{34%,66%,100%{opacity:1;}0%,33%,67%,99%{opacity:0;}}
-         @keyframes blink-right-jsx-1651943560{34%,66%,100%{opacity:1;}0%,33%,67%,99%{opacity:0;}}
-         .container--result.jsx-1651943560 .light-right.on.jsx-1651943560,.container--result.jsx-1651943560 .light-left.on.jsx-1651943560{-webkit-animation:blink-left-jsx-1651943560 0.3s step-end infinite alternate;animation:blink-left-jsx-1651943560 0.3s step-end infinite alternate;}
-      </style>
-      <style id="__jsx-2550074665">.frame.jsx-2550074665{position:relative;width:750px;height:750px;overflow:hidden;}
-         ul.jsx-2550074665{position:absolute;top:0;left:0;margin:0;padding:0;list-style:none;}
-      </style>
-      <style id="__jsx-1259073984">.container.jsx-1259073984{position:absolute;top:0;left:0;width:1920px;height:1080px;pointer-events:none;}
-         .container.jsx-1259073984 *.jsx-1259073984{pointer-events:none;}
-      </style>
-   </head>
-   <body>
-      <div>
-         <div id="__next">
+
+<head>
+    <meta charSet="utf-8" class="next-head" />
+    <link rel="preload" href="/unko-font-slot/_next/040a46a5-9f0a-45b3-901f-ced5280bc18f/page/index.js" as="script" />
+    <link rel="preload" href="/unko-font-slot/_next/040a46a5-9f0a-45b3-901f-ced5280bc18f/page/_error.js" as="script" />
+    <link rel="preload" href="/unko-font-slot/_next/0636619d2618a70fcf580d1ee601a69d/app.js" as="script" />
+    <style id="__jsx-656128260">
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <style id="__jsx-2114457093">
+        .container.jsx-1651943560 {
+            position: relative;
+            width: 1920px;
+            height: 1080px;
+            margin: auto;
+            background-image: url('/unko-font-slot/static/images/bg.jpg');
+        }
+
+        .game.jsx-1651943560 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1920px;
+            height: 1080px;
+            background-image: url('/unko-font-slot/static/images/bg-game.png');
+            cursor: pointer;
+        }
+
+        .slot.jsx-1651943560 {
+            position: absolute;
+            width: 750px;
+            height: 750px;
+            top: 67px;
+            left: 583px;
+        }
+
+        .link-result.jsx-1651943560 {
+            display: inline-block;
+            position: absolute;
+            top: 20px;
+            right: 14px;
+        }
+
+        .btn-next.jsx-1651943560 {
+            position: absolute;
+            bottom: 27px;
+            left: 380px;
+            height: 165px;
+            width: 1160px;
+            background-color: transparent;
+            border: none;
+            color: #ffe347;
+            text-align: center;
+            line-height: 165px;
+            font-size: 72px;
+            text-shadow: 0 0 20px #ffdf2e;
+        }
+
+        .light-left.jsx-1651943560 {
+            position: absolute;
+            top: -1px;
+            left: 480px;
+        }
+
+        .light-left.on.jsx-1651943560 {
+            -webkit-animation: blink-left-jsx-1651943560 2.0s step-end infinite alternate;
+            animation: blink-left-jsx-1651943560 2.0s step-end infinite alternate;
+        }
+
+        .light-right.jsx-1651943560 {
+            position: absolute;
+            top: -1px;
+            right: 480px;
+        }
+
+        .light-right.on.jsx-1651943560 {
+            -webkit-animation: blink-right-jsx-1651943560 2.0s step-end infinite alternate;
+            animation: blink-right-jsx-1651943560 2.0s step-end infinite alternate;
+        }
+
+        .on.jsx-1651943560 {
+            z-index: 2;
+            opacity: 0;
+        }
+
+        .off.jsx-1651943560 {
+            z-index: 1;
+        }
+
+        @-webkit-keyframes blink-left-jsx-1651943560 {
+            34%,
+            66%,
+            100% {
+                opacity: 0;
+            }
+            0%,
+            33%,
+            67%,
+            99% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes blink-left-jsx-1651943560 {
+            34%,
+            66%,
+            100% {
+                opacity: 0;
+            }
+            0%,
+            33%,
+            67%,
+            99% {
+                opacity: 1;
+            }
+        }
+
+        @-webkit-keyframes blink-right-jsx-1651943560 {
+            34%,
+            66%,
+            100% {
+                opacity: 1;
+            }
+            0%,
+            33%,
+            67%,
+            99% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes blink-right-jsx-1651943560 {
+            34%,
+            66%,
+            100% {
+                opacity: 1;
+            }
+            0%,
+            33%,
+            67%,
+            99% {
+                opacity: 0;
+            }
+        }
+
+        .container--result.jsx-1651943560 .light-right.on.jsx-1651943560,
+        .container--result.jsx-1651943560 .light-left.on.jsx-1651943560 {
+            -webkit-animation: blink-left-jsx-1651943560 0.3s step-end infinite alternate;
+            animation: blink-left-jsx-1651943560 0.3s step-end infinite alternate;
+        }
+    </style>
+    <style id="__jsx-2550074665">
+        .frame.jsx-2550074665 {
+            position: relative;
+            width: 750px;
+            height: 750px;
+            overflow: hidden;
+        }
+
+        ul.jsx-2550074665 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+    </style>
+    <style id="__jsx-1259073984">
+        .container.jsx-1259073984 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1920px;
+            height: 1080px;
+            pointer-events: none;
+        }
+
+        .container.jsx-1259073984 *.jsx-1259073984 {
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div id="__next">
             <div data-reactroot="">
-               <div class="jsx-1651943560 container">
-                  <div class="jsx-1651943560 game">
-                     <img src="/unko-font-slot/static/images/light-on.png" alt="" class="jsx-1651943560 light-left on"/><img src="/unko-font-slot/static/images/light-off.png" alt="" class="jsx-1651943560 light-left off"/>
-                     <div class="jsx-1651943560 slot">
-                        <div class="jsx-2550074665 frame">
-                           <ul style="top:0" class="jsx-2550074665"></ul>
-                        </div>
-                     </div>
-                     <img src="/unko-font-slot/static/images/light-on.png" alt="" class="jsx-1651943560 light-right on"/><img src="/unko-font-slot/static/images/light-off.png" alt="" class="jsx-1651943560 light-right off"/>
-                  </div>
-                  <button aria-label="next" class="jsx-1651943560 btn-next"></button>
-                  <div class="jsx-1259073984 container"></div>
-               </div>
+                <div class="jsx-1651943560 container">
+                    <div class="jsx-1651943560 game"><img src="/unko-font-slot/static/images/light-on.png" alt="" class="jsx-1651943560 light-left on" /><img src="/unko-font-slot/static/images/light-off.png" alt="" class="jsx-1651943560 light-left off" />
+                        <div class="jsx-1651943560 slot">
+                            <div class="jsx-2550074665 frame">
+                                <ul style="top:0" class="jsx-2550074665"></ul>
+                            </div>
+                        </div><img src="/unko-font-slot/static/images/light-on.png" alt="" class="jsx-1651943560 light-right on" /><img src="/unko-font-slot/static/images/light-off.png" alt="" class="jsx-1651943560 light-right off" /></div><button aria-label="next" class="jsx-1651943560 btn-next"></button>
+                    <div class="jsx-1259073984 container"></div>
+                </div>
             </div>
-         </div>
-         <div id="__next-error"></div>
-      </div>
-      <div>
-         <script>
-            __NEXT_DATA__ = {"props":{"isServer":true,"store":{},"initialState":{"game":{"selected":[],"left":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","28","29"],"isEnd":false},"members":{"byId":{"1":{"name":"A-OTF 見出ゴMB31 Pr6N","image":"/unko-font-slot/static/images/photos/A-OTF見出ゴMB31Pr6N.png"},"2":{"name":"AXIS","image":"/unko-font-slot/static/images/photos/AXIS.png"},"3":{"name":"DNP 秀英アンチック Std","image":"/unko-font-slot/static/images/photos/DNP秀英アンチックStd.png"},"4":{"name":"FOT-スーラ ProN","image":"/unko-font-slot/static/images/photos/FOT-スーラ ProN.png"},"5":{"name":"FOT-セザンヌ ProN","image":"/unko-font-slot/static/images/photos/FOT-セザンヌ ProN.png"},"6":{"name":"OSAKA","image":"/unko-font-slot/static/images/photos/OSAKA.png"},"7":{"name":"RoぶらっしゅStd","image":"/unko-font-slot/static/images/photos/RoぶらっしゅStd.png"},"8":{"name":"TBUDゴシック Std","image":"/unko-font-slot/static/images/photos/TBUDゴシック Std.png"},"9":{"name":"TB新聞明朝 Std","image":"/unko-font-slot/static/images/photos/TB新聞明朝 Std.png"},"10":{"name":"TB新聞ゴシック Std","image":"/unko-font-slot/static/images/photos/TB新聞ゴシック Std.png"},"11":{"name":"TBシネマ丸ゴシック Std","image":"/unko-font-slot/static/images/photos/TBシネマ丸ゴシック Std.png"},"12":{"name":"UD新ゴ","image":"/unko-font-slot/static/images/photos/UD新ゴ.png"},"13":{"name":"VDL 京千社","image":"/unko-font-slot/static/images/photos/VDL 京千社.png"},"14":{"name":"VDL ギガ丸","image":"/unko-font-slot/static/images/photos/VDL ギガ丸.png"},"15":{"name":"VDL ペンレディ","image":"/unko-font-slot/static/images/photos/VDL ペンレディ.png"},"16":{"name":"筑紫A丸","image":"/unko-font-slot/static/images/photos/筑紫A丸.png"},"17":{"name":"筑紫B丸ゴシック","image":"/unko-font-slot/static/images/photos/筑紫B丸ゴシック.png"},"18":{"name":"クレー","image":"/unko-font-slot/static/images/photos/クレー.png"},"19":{"name":"貂明朝","image":"/unko-font-slot/static/images/photos/貂明朝.png"},"20":{"name":"遊明朝","image":"/unko-font-slot/static/images/photos/遊明朝.png"},"21":{"name":"游教科書体","image":"/unko-font-slot/static/images/photos/游教科書体.png"},"22":{"name":"凸版文久明朝","image":"/unko-font-slot/static/images/photos/凸版文久明朝.png"},"23":{"name":"ヒラギノ明朝","image":"/unko-font-slot/static/images/photos/ヒラギノ明朝.png"},"24":{"name":"小塚ゴシック","image":"/unko-font-slot/static/images/photos/小塚ゴシック.png"},"25":{"name":"源ノ角ゴシック JP","image":"/unko-font-slot/static/images/photos/源ノ角ゴシック JP.png"},"26":{"name":"ヒラギノ丸ゴ","image":"/unko-font-slot/static/images/photos/ヒラギノ丸ゴ.png"},"28":{"name":"白舟極太楷書教漢","image":"/unko-font-slot/static/images/photos/白舟極太楷書教漢.png"},"29":{"name":"凸版文久ゴシック","image":"/unko-font-slot/static/images/photos/凸版文久ゴシック.png"}},"allIds":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","28","29"]},"slot":{"isAnimating":false,"pattern":[],"reelTop":0,"reelSpeed":300},"confetti":{"isAnimating":false,"tapes":[]},"result":{"isShow":false}},"initialProps":{"game":{"selected":[],"left":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","28","29"],"isEnd":false},"members":{"byId":{"1":{"name":"A-OTF 見出ゴMB31 Pr6N","image":"/unko-font-slot/static/images/photos/A-OTF 見出ゴMB31 Pr6N.png"},"2":{"name":"AXIS","image":"/unko-font-slot/static/images/photos/AXIS.png"},"3":{"name":"DNP 秀英アンチック Std","image":"/unko-font-slot/static/images/photos/DNP 秀英アンチック Std.png"},"4":{"name":"FOT-スーラ ProN","image":"/unko-font-slot/static/images/photos/FOT-スーラProN.png"},"5":{"name":"FOT-セザンヌ ProN","image":"/unko-font-slot/static/images/photos/FOT-セザンヌProN.png"},"6":{"name":"OSAKA","image":"/unko-font-slot/static/images/photos/OSAKA.png"},"7":{"name":"RoぶらっしゅStd","image":"/unko-font-slot/static/images/photos/RoぶらっしゅStd.png"},"8":{"name":"TBUDゴシック Std","image":"/unko-font-slot/static/images/photos/TBUDゴシック Std.png"},"9":{"name":"TB新聞明朝 Std","image":"/unko-font-slot/static/images/photos/TB新聞明朝 Std.png"},"10":{"name":"TB新聞ゴシック Std","image":"/unko-font-slot/static/images/photos/TB新聞ゴシック Std.png"},"11":{"name":"TBシネマ丸ゴシック Std","image":"/unko-font-slot/static/images/photos/TBシネマ丸ゴシック Std.png"},"12":{"name":"UD新ゴ","image":"/unko-font-slot/static/images/photos/UD新ゴ.png"},"13":{"name":"VDL 京千社","image":"/unko-font-slot/static/images/photos/VDL京千社.png"},"14":{"name":"VDL ギガ丸","image":"/unko-font-slot/static/images/photos/VDLギガ丸.png"},"15":{"name":"VDL ペンレディ","image":"/unko-font-slot/static/images/photos/VDLペンレディ.png"},"16":{"name":"筑紫A丸","image":"/unko-font-slot/static/images/photos/筑紫A丸.png"},"17":{"name":"筑紫B丸ゴシック","image":"/unko-font-slot/static/images/photos/筑紫B丸ゴシック.png"},"18":{"name":"クレー","image":"/unko-font-slot/static/images/photos/クレー.png"},"19":{"name":"貂明朝","image":"/unko-font-slot/static/images/photos/貂明朝.png"},"20":{"name":"遊明朝","image":"/unko-font-slot/static/images/photos/遊明朝.png"},"21":{"name":"游教科書体","image":"/unko-font-slot/static/images/photos/游教科書体.png"},"22":{"name":"凸版文久明朝","image":"/unko-font-slot/static/images/photos/凸版文久明朝.png"},"23":{"name":"ヒラギノ明朝","image":"/unko-font-slot/static/images/photos/ヒラギノ明朝.png"},"24":{"name":"小塚ゴシック","image":"/unko-font-slot/static/images/photos/小塚ゴシック.png"},"25":{"name":"源ノ角ゴシック JP","image":"/unko-font-slot/static/images/photos/源ノ角ゴシック JP.png"},"26":{"name":"ヒラギノ丸ゴ","image":"/unko-font-slot/static/images/photos/ヒラギノ丸ゴ.png"},"28":{"name":"白舟極太楷書教漢","image":"/unko-font-slot/static/images/photos/白舟極太楷書教漢.png"},"29":{"name":"凸版文久ゴシック","image":"/unko-font-slot/static/images/photos/凸版文久ゴシック.png"}},"allIds":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","28","29"]},"slot":{"isAnimating":false,"pattern":[],"reelTop":0,"reelSpeed":300},"confetti":{"isAnimating":false,"tapes":[]},"result":{"isShow":false}}},"pathname":"/","query":{},"buildId":"27714aaf-9400-4a30-afcc-88b5f5a13a90","buildStats":{"app.js":{"hash":"893ec800e03f9726ad5dc84fe558ff1f"}},"assetPrefix":"","nextExport":true,"err":null,"chunks":[]}
-            module={}
+        </div>
+        <div id="__next-error"></div>
+    </div>
+    <div>
+        <script>
+            __NEXT_DATA__ = {
+                "props": {
+                    "isServer": true,
+                    "store": {},
+                    "initialState": {
+                        "game": {
+                            "selected": [],
+                            "left": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28"],
+                            "isEnd": false
+                        },
+                        "members": {
+                            "byId": {
+                                "1": {
+                                    "name": "A-OTF 見出ゴMB31 Pr6N",
+                                    "image": "/unko-font-slot/static/images/photos/01_mb31"
+                                },
+                                "2": {
+                                    "name": "AXIS",
+                                    "image": "/unko-font-slot/static/images/photos/02_AXIS.png"
+                                },
+                                "3": {
+                                    "name": "DNP 秀英アンチック Std",
+                                    "image": "/unko-font-slot/static/images/photos/03_antic.png"
+                                },
+                                "4": {
+                                    "name": "FOT-スーラ ProN",
+                                    "image": "/unko-font-slot/static/images/photos/04_sula.png"
+                                },
+                                "5": {
+                                    "name": "FOT-セザンヌ ProN",
+                                    "image": "/unko-font-slot/static/images/photos/05_sezanu.png"
+                                },
+                                "6": {
+                                    "name": "OSAKA",
+                                    "image": "/unko-font-slot/static/images/photos/06_OSAKA.png"
+                                },
+                                "7": {
+                                    "name": "RoぶらっしゅStd",
+                                    "image": "/unko-font-slot/static/images/photos/07_brash.png"
+                                },
+                                "8": {
+                                    "name": "TBUDゴシック Std",
+                                    "image": "/unko-font-slot/static/images/photos/08_tbudgo.png"
+                                },
+                                "9": {
+                                    "name": "TB新聞明朝 Std",
+                                    "image": "/unko-font-slot/static/images/photos/09_tbnewsgo.png"
+                                },
+                                "10": {
+                                    "name": "TB新聞ゴシック Std",
+                                    "image": "/unko-font-slot/static/images/photos/10_tbnewsmincho.png"
+                                },
+                                "11": {
+                                    "name": "TBシネマ丸ゴシック Std",
+                                    "image": "/unko-font-slot/static/images/photos/11_cinema.png"
+                                },
+                                "12": {
+                                    "name": "UD新ゴ",
+                                    "image": "/unko-font-slot/static/images/photos/12_udshingo.png"
+                                },
+                                "13": {
+                                    "name": "VDL 京千社",
+                                    "image": "/unko-font-slot/static/images/photos/13_kyo.png"
+                                },
+                                "14": {
+                                    "name": "VDL ギガ丸",
+                                    "image": "/unko-font-slot/static/images/photos/14_vdlgigamaru.png"
+                                },
+                                "15": {
+                                    "name": "VDL ペンレディ",
+                                    "image": "/unko-font-slot/static/images/photos/15_vdllady.png"
+                                },
+                                "16": {
+                                    "name": "筑紫A丸",
+                                    "image": "/unko-font-slot/static/images/photos/16_tsukushiA.png"
+                                },
+                                "17": {
+                                    "name": "筑紫B丸ゴシック",
+                                    "image": "/unko-font-slot/static/images/photos/17_tsukushiB.png"
+                                },
+                                "18": {
+                                    "name": "クレー",
+                                    "image": "/unko-font-slot/static/images/photos/18_klee.png"
+                                },
+                                "19": {
+                                    "name": "貂明朝",
+                                    "image": "/unko-font-slot/static/images/photos/19_ten.png"
+                                },
+                                "20": {
+                                    "name": "遊明朝",
+                                    "image": "/unko-font-slot/static/images/photos/20_yumincho.png"
+                                },
+                                "21": {
+                                    "name": "游教科書体",
+                                    "image": "/unko-font-slot/static/images/photos/21_yukyokasho.png"
+                                },
+                                "22": {
+                                    "name": "凸版文久明朝",
+                                    "image": "/unko-font-slot/static/images/photos/22_totsumin.png"
+                                },
+                                "23": {
+                                    "name": "ヒラギノ明朝",
+                                    "image": "/unko-font-slot/static/images/photos/23_hiragino_mincho.png"
+                                },
+                                "24": {
+                                    "name": "小塚ゴシック",
+                                    "image": "/unko-font-slot/static/images/photos/24_koduka.png"
+                                },
+                                "25": {
+                                    "name": "源ノ角ゴシック JP",
+                                    "image": "/unko-font-slot/static/images/photos/25_gen.png"
+                                },
+                                "26": {
+                                    "name": "ヒラギノ丸ゴ",
+                                    "image": "/unko-font-slot/static/images/photos/26_hiragino_maru.png"
+                                },
+                                "27": {
+                                    "name": "白舟極太楷書教漢",
+                                    "image": "/unko-font-slot/static/images/photos/27_shiro.png"
+                                },
+                                "28": {
+                                    "name": "凸版文久ゴシック",
+                                    "image": "/unko-font-slot/static/images/photos/28_tostsugo.png"
+                                }
+                            },
+                            "allIds": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28"]
+                        },
+                        "slot": {
+                            "isAnimating": false,
+                            "pattern": [],
+                            "reelTop": 0,
+                            "reelSpeed": 300
+                        },
+                        "confetti": {
+                            "isAnimating": false,
+                            "tapes": []
+                        },
+                        "result": {
+                            "isShow": false
+                        }
+                    },
+                    "initialProps": {
+                        "game": {
+                            "selected": [],
+                            "left": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28"],
+                            "isEnd": false
+                        },
+                        "members": {
+                            "byId": {
+                                "1": {
+                                    "name": "A-OTF 見出ゴMB31 Pr6N",
+                                    "image": "/unko-font-slot/static/images/photos/01_mb31"
+                                },
+                                "2": {
+                                    "name": "AXIS",
+                                    "image": "/unko-font-slot/static/images/photos/02_AXIS.png"
+                                },
+                                "3": {
+                                    "name": "DNP 秀英アンチック Std",
+                                    "image": "/unko-font-slot/static/images/photos/03_antic.png"
+                                },
+                                "4": {
+                                    "name": "FOT-スーラ ProN",
+                                    "image": "/unko-font-slot/static/images/photos/04_sula.png"
+                                },
+                                "5": {
+                                    "name": "FOT-セザンヌ ProN",
+                                    "image": "/unko-font-slot/static/images/photos/05_sezanu.png"
+                                },
+                                "6": {
+                                    "name": "OSAKA",
+                                    "image": "/unko-font-slot/static/images/photos/06_OSAKA.png"
+                                },
+                                "7": {
+                                    "name": "RoぶらっしゅStd",
+                                    "image": "/unko-font-slot/static/images/photos/07_brash.png"
+                                },
+                                "8": {
+                                    "name": "TBUDゴシック Std",
+                                    "image": "/unko-font-slot/static/images/photos/08_tbudgo.png"
+                                },
+                                "9": {
+                                    "name": "TB新聞明朝 Std",
+                                    "image": "/unko-font-slot/static/images/photos/09_tbnewsgo.png"
+                                },
+                                "10": {
+                                    "name": "TB新聞ゴシック Std",
+                                    "image": "/unko-font-slot/static/images/photos/10_tbnewsmincho.png"
+                                },
+                                "11": {
+                                    "name": "TBシネマ丸ゴシック Std",
+                                    "image": "/unko-font-slot/static/images/photos/11_cinema.png"
+                                },
+                                "12": {
+                                    "name": "UD新ゴ",
+                                    "image": "/unko-font-slot/static/images/photos/12_udshingo.png"
+                                },
+                                "13": {
+                                    "name": "VDL 京千社",
+                                    "image": "/unko-font-slot/static/images/photos/13_kyo.png"
+                                },
+                                "14": {
+                                    "name": "VDL ギガ丸",
+                                    "image": "/unko-font-slot/static/images/photos/14_vdlgigamaru.png"
+                                },
+                                "15": {
+                                    "name": "VDL ペンレディ",
+                                    "image": "/unko-font-slot/static/images/photos/15_vdllady.png"
+                                },
+                                "16": {
+                                    "name": "筑紫A丸",
+                                    "image": "/unko-font-slot/static/images/photos/16_tsukushiA.png"
+                                },
+                                "17": {
+                                    "name": "筑紫B丸ゴシック",
+                                    "image": "/unko-font-slot/static/images/photos/17_tsukushiB.png"
+                                },
+                                "18": {
+                                    "name": "クレー",
+                                    "image": "/unko-font-slot/static/images/photos/18_klee.png"
+                                },
+                                "19": {
+                                    "name": "貂明朝",
+                                    "image": "/unko-font-slot/static/images/photos/19_ten.png"
+                                },
+                                "20": {
+                                    "name": "遊明朝",
+                                    "image": "/unko-font-slot/static/images/photos/20_yumincho.png"
+                                },
+                                "21": {
+                                    "name": "游教科書体",
+                                    "image": "/unko-font-slot/static/images/photos/21_yukyokasho.png"
+                                },
+                                "22": {
+                                    "name": "凸版文久明朝",
+                                    "image": "/unko-font-slot/static/images/photos/22_totsumin.png"
+                                },
+                                "23": {
+                                    "name": "ヒラギノ明朝",
+                                    "image": "/unko-font-slot/static/images/photos/23_hiragino_mincho.png"
+                                },
+                                "24": {
+                                    "name": "小塚ゴシック",
+                                    "image": "/unko-font-slot/static/images/photos/24_koduka.png"
+                                },
+                                "25": {
+                                    "name": "源ノ角ゴシック JP",
+                                    "image": "/unko-font-slot/static/images/photos/25_gen.png"
+                                },
+                                "26": {
+                                    "name": "ヒラギノ丸ゴ",
+                                    "image": "/unko-font-slot/static/images/photos/26_hiragino_maru.png"
+                                },
+                                "27": {
+                                    "name": "白舟極太楷書教漢",
+                                    "image": "/unko-font-slot/static/images/photos/27_shiro.png"
+                                },
+                                "28": {
+                                    "name": "凸版文久ゴシック",
+                                    "image": "/unko-font-slot/static/images/photos/28_tostsugo.png"
+                                }
+                            },
+                            "allIds": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28"]
+                        },
+                        "slot": {
+                            "isAnimating": false,
+                            "pattern": [],
+                            "reelTop": 0,
+                            "reelSpeed": 300
+                        },
+                        "confetti": {
+                            "isAnimating": false,
+                            "tapes": []
+                        },
+                        "result": {
+                            "isShow": false
+                        }
+                    }
+                },
+                "pathname": "/",
+                "query": {},
+                "buildId": "040a46a5-9f0a-45b3-901f-ced5280bc18f",
+                "buildStats": {
+                    "app.js": {
+                        "hash": "0636619d2618a70fcf580d1ee601a69d"
+                    }
+                },
+                "assetPrefix": "",
+                "nextExport": true,
+                "err": null,
+                "chunks": []
+            }
+            module = {}
             __NEXT_LOADED_PAGES__ = []
             __NEXT_LOADED_CHUNKS__ = []
-            
-            __NEXT_REGISTER_PAGE = function (route, fn) {
-              __NEXT_LOADED_PAGES__.push({ route: route, fn: fn })
+
+            __NEXT_REGISTER_PAGE = function(route, fn) {
+                __NEXT_LOADED_PAGES__.push({
+                    route: route,
+                    fn: fn
+                })
             }
-            
-            __NEXT_REGISTER_CHUNK = function (chunkName, fn) {
-              __NEXT_LOADED_CHUNKS__.push({ chunkName: chunkName, fn: fn })
+
+            __NEXT_REGISTER_CHUNK = function(chunkName, fn) {
+                __NEXT_LOADED_CHUNKS__.push({
+                    chunkName: chunkName,
+                    fn: fn
+                })
             }
-         </script><script async="" id="__NEXT_PAGE__/" type="text/javascript" src="index.js"></script><script async="" id="__NEXT_PAGE__/_error" type="text/javascript" src="error.js"></script>
-         <div></div>
-         <script type="text/javascript" src="app.js" async=""></script>
-      </div>
-   </body>
+        </script>
+        <script async="" id="__NEXT_PAGE__/" type="text/javascript" src="/unko-font-slot/_next/040a46a5-9f0a-45b3-901f-ced5280bc18f/page/index.js"></script>
+        <script async="" id="__NEXT_PAGE__/_error" type="text/javascript" src="/unko-font-slot/_next/040a46a5-9f0a-45b3-901f-ced5280bc18f/page/_error.js"></script>
+        <div></div>
+        <script type="text/javascript" src="/unko-font-slot/_next/0636619d2618a70fcf580d1ee601a69d/app.js" async=""></script>
+    </div>
+</body>
+
 </html>
