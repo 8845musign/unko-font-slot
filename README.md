@@ -1,10 +1,6 @@
-# bingo-2017
+# unko-font-slot
 
-Japanese "ENKAI" Style.
-
-human name and photo base!.
-
-A Bingo use random number, but this game use member name and photos!.
+Lucky Unko!
 
 # dev
 
